@@ -1,0 +1,3 @@
+- include: users.yml
+- include: jdk-8.yml
+- include: postgresql-9.5.yml

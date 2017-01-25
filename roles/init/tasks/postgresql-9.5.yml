@@ -1,0 +1,23 @@
+---
+- name: add PostgreSQL apt repository key
+  apt_key:
+    id: ACCC4CF8
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+- name: add PostgreSQL apt repository
+  apt_repository:
+    repo: "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main"
+
+- name: install PostgreSQL server
+  apt:
+    name: "postgresql-9.5"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: copy pg_hba.conf
+  copy:
+    src: ./files/pg_hba.conf
+    dest: /etc/postgresql/9.5/main/pg_hba.conf
+  notify:
+    - restart postgresql

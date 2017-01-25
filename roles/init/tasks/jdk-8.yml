@@ -1,0 +1,11 @@
+---
+- name: Add jdk repo
+  apt_repository:
+    repo: deb http://ftp.de.debian.org/debian jessie-backports main
+    state: present
+
+- name: Install
+  apt:
+    pkg: openjdk-8-jdk
+    state: installed
+    update_cache: true

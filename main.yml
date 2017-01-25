@@ -1,0 +1,12 @@
+---
+
+# Infrastructure playbook
+# ---------------------------
+
+# A Simple, straight playbook for installing basic infrastructure for
+# Libreforge
+
+- hosts:
+    - libreforge
+  roles:
+    - init
