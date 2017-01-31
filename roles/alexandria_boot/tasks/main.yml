@@ -1,0 +1,2 @@
+- include: install_jdk8.yml
+- include: install_postgresql-9.5.yml
