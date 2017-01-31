@@ -6,7 +6,7 @@
 
 - name: Upload config file
   template:
-    src: config-files/alexandria-application.yml
+    src: alexandria-application.yml
     dest: "{{ upload_alexandria_path }}"
     force: yes
 
