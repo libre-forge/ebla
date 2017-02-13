@@ -1,0 +1,19 @@
+---
+- name: install psycopg2 to be able to use postgresql ansible modules
+  apt:
+    name: python-psycopg2
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: create libreforge database role
+  postgresql_user:
+    user: "{{ alexandria_db_username }}"
+    state: present
+
+- name: create libreforge database
+  postgresql_db:
+    name: "{{ alexandria_db_name }}"
+    owner: "{{ alexandria_db_username }}"
+    state: present

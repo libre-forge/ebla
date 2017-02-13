@@ -3,7 +3,6 @@
 #######################
 
 ansible_user_id:
-ansible_user_dir:
 
 #######################
 ### ALEXANDRIA LOCAL ##
@@ -16,5 +15,14 @@ upload_alexandria_built_jar_path:
 #######################
 
 upload_alexandria_path:
-upload_alexandria_jar_path:
-upload_alexandria_java_absolute_path:
+upload_alexandria_jar:
+upload_alexandria_jar_old:
+
+#######################
+#### ALEXANDRIA DB ####
+#######################
+
+alexandria_db_username:
+alexandria_db_password:
+alexandria_db_name:
+alexandria_db_server:

@@ -1,0 +1,22 @@
+---
+- name: make sure that the alexandria path exists
+  file:
+    path: "{{ upload_alexandria_path }}"
+    state: directory
+
+- name: create alexandria systemd service
+  become: yes
+  template:
+    src: alexandria.service
+    dest: /etc/systemd/system/alexandria.service
+
+- name: reload systemd config
+  become: yes
+  command: systemctl daemon-reload
+
+- name: enable alexandria service
+  become: yes
+  service:
+    name: alexandria
+    state: started
+    enabled: yes

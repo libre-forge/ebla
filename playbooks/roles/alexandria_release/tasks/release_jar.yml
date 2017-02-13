@@ -1,0 +1,28 @@
+---
+- name: stop alexandria
+  become: yes
+  service:
+    name: alexandria
+    state: stopped
+
+- name: stat old worker
+  stat:
+    path: "{{ upload_alexandria_path }}/{{ upload_alexandria_jar }}"
+  register: old_jar_stat
+
+- name: rename old worker
+  shell: mv "{{ upload_alexandria_path }}/{{ upload_alexandria_jar }}" "{{ upload_alexandria_path }}/{{ upload_alexandria_jar_old }}"
+  when: old_jar_stat.stat.exists
+
+- name: upload new jar
+  copy:
+    src: "{{ upload_alexandria_built_jar_path }}"
+    dest: "{{ upload_alexandria_path }}/{{ upload_alexandria_jar }}"
+    mode: 0755
+
+- name: start alexandria service
+  become: yes
+  service:
+    name: alexandria
+    state: started
+    enabled: yes

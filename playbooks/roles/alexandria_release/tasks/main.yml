@@ -1,0 +1,9 @@
+---
+- name: prepare database
+  include: release_db.yml
+
+- name: prepare config file
+  include: release_cfg.yml
+
+- name: run jar and reload
+  include: release_jar.yml

@@ -1,0 +1,13 @@
+[Unit]
+Description=alexandria
+After=network.target
+
+[Service]
+User={{ ansible_user_id }}
+ExecStart={{ upload_alexandria_java_absolute_path }} -jar {{ upload_alexandria_path }}/{{ upload_alexandria_jar }}
+WorkingDirectory={{ upload_alexandria_path }}
+SuccessExitStatus=143
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
