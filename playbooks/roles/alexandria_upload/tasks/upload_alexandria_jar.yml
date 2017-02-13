@@ -4,15 +4,24 @@
     src: "{{ upload_alexandria_built_jar_path }}"
     dest: "{{ upload_alexandria_path }}"
     mode: 0755
+
 - name: Stop alexandria
   become: yes
-  service: name=alexandria state=stopped
+  service:
+    name: alexandria
+    state: stopped
+
 - name: Remove old worker
   file:
     path: "{{ upload_alexandria_jar_path }}"
     state: absent
+
 - name: Move new worker to final path
   command: mv {{ upload_alexandria_path }} {{ upload_alexandria_jar_path }}
+
 - name: Start alexandria service
   become: yes
-  service: name=alexandria state=started enabled=yes
+  service:
+    name: alexandria
+    state: started
+    enabled: yes
