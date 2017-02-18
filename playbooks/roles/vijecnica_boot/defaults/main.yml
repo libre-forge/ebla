@@ -1,0 +1,5 @@
+---
+www_front:
+  port: {{ front_port }}
+  domain: {{ front_domain }}
+  path: {{ front_path }}

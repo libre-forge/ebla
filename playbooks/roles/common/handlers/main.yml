@@ -4,3 +4,9 @@
   service:
     name: postgresql
     state: restarted
+
+- name: nginx restart
+  become: yes
+  service:
+    name: nginx
+    state: restarted

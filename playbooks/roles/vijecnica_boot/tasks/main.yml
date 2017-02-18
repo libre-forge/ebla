@@ -1,0 +1,38 @@
+---
+- name: add nginx
+  become: true
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: true
+  with_items:
+    - nginx
+    - nginx-extras
+
+- name: copy default nginx config
+  become: yes
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    force: yes
+  notify: nginx restart
+
+- name: configure seequestor site
+  become: yes
+  template:
+    src: vijecnica.conf
+    dest: /etc/nginx/sites-available/vijecnica.conf
+
+- name: enable vijecnica nginx site
+  become: yes
+  file:
+    src: /etc/nginx/sites-available/vijecnica.conf
+    path: /etc/nginx/sites-enabled/vijecnica.conf
+    state: link
+  notify: nginx restart
+
+- name: remove default nginx site
+  become: yes
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
