@@ -3,3 +3,4 @@
     - libreforge
   roles:
     - alexandria_boot
+    - vijecnica_boot
