@@ -1,7 +1,7 @@
 ---
 - name: Add jdk repo
   apt_repository:
-    repo: deb http://ftp.de.debian.org/debian jessie-backports main
+    repo: "{{ java_repo_url }}"
     state: present
 
 - name: Install
