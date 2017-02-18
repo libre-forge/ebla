@@ -2,5 +2,6 @@
 - hosts:
     - libreforge
   roles:
+    - common
     - alexandria_boot
     - vijecnica_boot

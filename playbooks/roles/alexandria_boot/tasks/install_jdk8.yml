@@ -1,10 +1,12 @@
 ---
-- name: Add jdk repo
+- name: add openjdk-8 repo
+  become: true
   apt_repository:
     repo: "{{ java_repo_url }}"
     state: present
 
-- name: Install
+- name: install openjdk-8
+  become: true
   apt:
     pkg: openjdk-8-jdk
     state: installed

@@ -2,4 +2,5 @@
 - hosts:
     - libreforge
   roles:
+    - common
     - alexandria_release

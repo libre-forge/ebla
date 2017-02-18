@@ -2,22 +2,27 @@
 ##### ALEXANDRIA ######
 #######################
 
-ansible_user_id: {{ system_user }}
-upload_alexandria_built_jar_path: {{ binary_path }}
+java_repo_url: deb http://ftp.de.debian.org/debian jessie-backports main
+postgres_repo_key: ACCC4CF8
+postgres_repo_key_url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+postgres_repo_url: deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main
+
+ansible_user_id: "{{ system_user }}"
+upload_alexandria_built_jar_path: "{{ binary_path }}"
 upload_alexandria_path: /home/{{ system_user }}
 upload_alexandria_jar: alexandria.jar
 upload_alexandria_jar_old: alexandria_old.jar
-upload_alexandria_java_absolute_path: {{ java_absolute_path }}
-alexandria_db_username: {{ db_username }}
-alexandria_db_password: {{ db_password }}
-alexandria_db_name: {{ db_name }}
-alexandria_db_server: {{ db_server_hostname }}
+upload_alexandria_java_absolute_path: "{{ java_absolute_path }}"
+alexandria_db_username: "{{ db_username }}"
+alexandria_db_password: "{{ db_password }}"
+alexandria_db_name: "{{ db_name }}"
+alexandria_db_server: "{{ db_server_hostname }}"
 
 #######################
 ###### VIJECNICA ######
 #######################
 
 www_front:
-  port: {{ front_port }}
-  domain: {{ front_domain }}
-  path: {{ front_path }}
+  port: "{{ front_port }}"
+  domain: "{{ front_domain }}"
+  path: "{{ front_path }}"
